@@ -1,5 +1,7 @@
 A bare-bones Chisel 3 project that works as a starting point for larger projects, based off of Chick Markley's (slightly less bare-bones) [`dsp-chisel3`](https://github.com/chick/dsp-chisel3).
 
+Alternatively, a better approach may be to just use Jack Koenig's [`chisel3-skeleton`](https://github.com/jackkoenig/chisel3-skeleton) as this uses fewer dependencies, doesn't require all the testing infrastructure, and just generates the Verilog.
+
 ## Dependencies
 Currently, all Chisel 3 development is not available in a Maven repository, so you must build and publish the necessary dependencies locally. For the following repositories, clone them and publish them locally:
 * [chisel3](https://github.com/ucb-bar/chisel3) -- provides `chisel3`, `chiselfrontend`, and `coremacros`
@@ -33,7 +35,7 @@ object Tests {
 }
 ```
 
-An example is provided in [`Boolean.scala`]().
+An example is provided in [`Boolean.scala`](https://github.com/seldridge/chisel3-base/blob/master/src/main/scala/Boolean.scala).
 
 ## Notes
 The testers provided by `chisel3.iotesters` are abstract and rely on a `val device_under_test` being defined.
