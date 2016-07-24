@@ -1,6 +1,5 @@
 import chisel3._
 import chisel3.iotesters.SteppedHWIOTester
-import chisel3.testers.TesterDriver
 
 class BooleanIO(n: Int) extends Bundle {
   val x = Vec(Bool(INPUT), n)
@@ -39,16 +38,6 @@ class OrTester extends SteppedHWIOTester {
       poke(device_under_test.io.x(1), j)
       expect(device_under_test.io.f, i | j)
       step(1)
-    }
-  }
-}
-
-object BooleanTests {
-  def main(args: Array[String]): Unit = {
-    val argsArray = args.slice(1, args.length)
-    val res = args(0) match {
-      case "And" => TesterDriver.execute { () => new AndTester }
-      case "Or" => TesterDriver.execute  { () => new OrTester }
     }
   }
 }
