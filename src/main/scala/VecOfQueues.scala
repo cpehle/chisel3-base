@@ -1,3 +1,5 @@
+package chisel3Base
+
 import chisel3._
 import chisel3.util.Queue
 import chisel3.iotesters.SteppedHWIOTester
@@ -13,7 +15,7 @@ class VecOfQueues extends Module {
     val y = Bool(OUTPUT)
   }
 
-  val voq = Vec(2, Module(new Queue(new QueueBundle, 2)).io)
+  val voq = Vec.fill(2)(Module(new Queue(new QueueBundle, 2)).io)
 }
 
 

@@ -1,3 +1,5 @@
+package chisel3Base
+
 import chisel3._
 import chisel3.iotesters.SteppedHWIOTester
 
@@ -13,7 +15,7 @@ abstract class Boolean(n: Int, f: Vec[Bool] => Bool) extends Module {
 }
 
 class And extends Boolean(2, x => x.toBits.andR)
-class Or extends Boolean(2, x => x.toBits.orR)
+class Or  extends Boolean(2, x => x.toBits.orR)
 
 class AndTester extends SteppedHWIOTester {
   val device_under_test = Module(new And)
