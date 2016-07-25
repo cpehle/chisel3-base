@@ -13,7 +13,7 @@ class VecOfQueues extends Module {
     val y = Bool(OUTPUT)
   }
 
-  val voq = Vec(Module(new Queue(new QueueBundle, 2)).io, 1)
+  val voq = Vec(2, Module(new Queue(new QueueBundle, 2)).io)
 }
 
 

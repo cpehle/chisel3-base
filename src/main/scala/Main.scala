@@ -13,6 +13,8 @@ object Main {
         () => new AndInsideTester }
       case "OrInside" => TesterDriver.execute {
         () => new OrInsideTester }
+      case "VecAndInside" => TesterDriver.execute {
+        () => new VecAndInsideTester }
     }
   }
 }

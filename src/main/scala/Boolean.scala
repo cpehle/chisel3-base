@@ -2,21 +2,18 @@ import chisel3._
 import chisel3.iotesters.SteppedHWIOTester
 
 class BooleanIO(n: Int) extends Bundle {
-  val x = Vec(Bool(INPUT), n)
+  val x = Vec(n, Bool(INPUT))
   val f = Bool(OUTPUT)
+  override def cloneType = new BooleanIO(n).asInstanceOf[this.type]
 }
 
-abstract class Boolean(n: Int) extends Module {
+abstract class Boolean(n: Int, f: Vec[Bool] => Bool) extends Module {
   val io = new BooleanIO(n)
+  io.f := f(io.x)
 }
 
-class And extends Boolean(2) {
-  io.f := io.x.toBits.andR
-}
-
-class Or extends Boolean(2) {
-  io.f := io.x.toBits.orR
-}
+class And extends Boolean(2, x => x.toBits.andR)
+class Or extends Boolean(2, x => x.toBits.orR)
 
 class AndTester extends SteppedHWIOTester {
   val device_under_test = Module(new And)
