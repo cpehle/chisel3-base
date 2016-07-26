@@ -37,11 +37,14 @@ object Main {
       case "And" => Builder.do_all           { () => new And               }
       case "Or" => Builder.do_all            { () => new Or                }
       case "VecOfQueues" => Builder.do_all   { () => new VecOfQueues       }
+      case "SecOfQueues" => Builder.do_all   { () => new SecOfQueues       }
       case "AndInside" => Builder.do_all     { () => new AndInside         }
       case "OrInside" => Builder.do_all      { () => new OrInside          }
       case "VecAndInside" => Builder.do_all  { () => new VecAndInside      }
       case "VecModParam" => Builder.do_all   { () => new VecModParamTest   }
       case "VecModNoParam" => Builder.do_all { () => new VecModNoParamTest }
+      case "BundleFromBits" =>Builder.do_all { () => new BundleFromBits    }
+      case "BundleToBits" => Builder.do_all  { () => new BundleToBits      }
 
       // case "And" => TesterDriver.execute { () => new AndTester }
       // case "Or" => TesterDriver.execute  { () => new OrTester }
