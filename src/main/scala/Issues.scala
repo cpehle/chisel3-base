@@ -58,9 +58,23 @@ class VecOfModAsParamBase[T <: Bundle, U <: Vec[T]](n: Int, gen: => U)
   val io = new Bundle {
     val data = Vec(n, new MyBundle)
   }
-
   (0 until n).map(i => io.data(i) <> buildIt(i))
 }
 
 class VecOfModAsParam extends VecOfModAsParamBase[MyBundle,Vec[MyBundle]] (
   2, Vec.fill(2)(Module(new MyModule).io))
+
+abstract class VecOfModViaTypeBase[T <: MyBundle] extends Module {
+  val buildIt: Vec[T]
+  val io = new Bundle {
+    val data = Vec(2, new MyBundle)
+  }
+  def init {
+    (0 until 2).map(i => io.data(i) <> buildIt(i))
+  }
+}
+
+class VecOfModViaType extends VecOfModViaTypeBase[MyBundle] {
+  val buildIt = Vec.fill(2)(Module(new MyModule).io)
+  this.init
+}
