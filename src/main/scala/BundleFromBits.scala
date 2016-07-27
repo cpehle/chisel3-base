@@ -8,26 +8,14 @@ import chisel3._
 class TestBundle extends Bundle {
   val a = Bool()
   val b = UInt(width = 15)
-  val c = UInt(width = 4)
 }
 
-class TestBundleIsIO extends Module {
+class TestBundleIsIO(n: Int) extends Module {
   val io = new Bundle {
-    val in = new TestBundle
-    val out = new TestBundle
+    val out = Vec(n, new TestBundle)
+    val in = UInt(width = out.width.get * n)
   }
+  io.out := Vec(n, new TestBundle).fromBits(io.in)
 }
 
-class BundleFromBits extends TestBundleIsIO {
-  val bits = Wire(UInt(width = io.width))
-
-  bits := io.in.toBits
-  io.out.fromBits(bits)
-}
-
-class BundleToBits extends TestBundleIsIO {
-  val bits = Wire(UInt(width = io.width))
-
-  bits := io.in.toBits
-  io.out.toBits := bits
-}
+class BundleFromBits extends TestBundleIsIO(2)
