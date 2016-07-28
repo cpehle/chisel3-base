@@ -3,7 +3,7 @@ package chisel3Base
 import chisel3._
 import chisel3.testers.TesterDriver
 import java.io._
-import traitAndClassOrdering.TraitOrdering
+import chisel3Base.traitAndClassOrdering.TraitOrdering
 
 import issues._
 

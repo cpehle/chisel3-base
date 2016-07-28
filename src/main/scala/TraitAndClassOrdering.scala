@@ -1,4 +1,4 @@
-package traitAndClassOrdering
+package chisel3Base.traitAndClassOrdering
 
 import chisel3._
 
