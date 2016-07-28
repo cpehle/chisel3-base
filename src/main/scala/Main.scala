@@ -45,6 +45,7 @@ object Main {
       case "VecModNoParam" => Builder.do_all { () => new VecModNoParamTest }
       case "BundleFromBits" =>Builder.do_all { () => new BundleFromBits    }
       case "VecOfModAsParam"=>Builder.do_all { () => new VecOfModAsParam   }
+      case "VecOfModAsParamChild"=>Builder.do_all{()=>new VecOfModAsParamChild }
       case "VecOfModViaType"=>Builder.do_all { () => new VecOfModViaType   }
       case "VecOfModViaSeq" =>Builder.do_all { () => new VecOfModViaSeq    }
 
