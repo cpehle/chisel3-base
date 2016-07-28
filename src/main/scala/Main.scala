@@ -3,6 +3,7 @@ package chisel3Base
 import chisel3._
 import chisel3.testers.TesterDriver
 import java.io._
+import traitAndClassOrdering.TraitOrdering
 
 import issues._
 
@@ -48,6 +49,7 @@ object Main {
       case "VecOfModAsParamChild"=>Builder.do_all{()=>new VecOfModAsParamChild }
       case "VecOfModViaType"=>Builder.do_all { () => new VecOfModViaType   }
       case "VecOfModViaSeq" =>Builder.do_all { () => new VecOfModViaSeq    }
+      case "TraitOrdering" => Builder.do_all { () => new TraitOrdering     }
 
       // case "And" => TesterDriver.execute { () => new AndTester }
       // case "Or" => TesterDriver.execute  { () => new OrTester }
