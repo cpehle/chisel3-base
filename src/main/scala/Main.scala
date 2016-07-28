@@ -46,6 +46,7 @@ object Main {
       case "BundleFromBits" =>Builder.do_all { () => new BundleFromBits    }
       case "VecOfModAsParam"=>Builder.do_all { () => new VecOfModAsParam   }
       case "VecOfModViaType"=>Builder.do_all { () => new VecOfModViaType   }
+      case "VecOfModViaSeq" =>Builder.do_all { () => new VecOfModViaSeq    }
 
       // case "And" => TesterDriver.execute { () => new AndTester }
       // case "Or" => TesterDriver.execute  { () => new OrTester }
