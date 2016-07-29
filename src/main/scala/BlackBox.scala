@@ -2,9 +2,10 @@ package chisel3Base.blackBoxTests
 
 import chisel3._
 
-class MyBlackBoxIO extends Bundle {
-  val a = Bool(INPUT)
-  val b = Bool(OUTPUT)
+class MyBlackBoxIO(n: Int = 1) extends Bundle {
+  val a = UInt(INPUT, width = n)
+  val b = UInt(OUTPUT, width = n)
+  override def cloneType = new MyBlackBoxIO(n).asInstanceOf[this.type]
 }
 
 trait ExplicitClkAndReset {
@@ -41,4 +42,18 @@ class BlackBoxSubModule extends Module {
   // Explicit connection of bbox
   bbox.io.a := io.data(1).a          // <-- These are ok
   io.data(1).b := bbox.io.b
+}
+
+class MyBlackBoxNoFlip(n: Int) extends BlackBox {
+  val io = new MyBlackBoxIO(n)
+}
+
+class MyBlackBoxFlip(n: Int) extends BlackBox {
+  val io = (new MyBlackBoxIO(n)).flip
+}
+
+class BlackBoxFlips extends Module {
+  val bboxNoFlip = Module(new MyBlackBoxNoFlip(4))
+  val bboxFlip = Module(new MyBlackBoxFlip(4))
+  val io = new Bundle {}
 }
