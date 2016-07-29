@@ -36,8 +36,9 @@ class BlackBoxSubModule extends Module {
   // Bulk connections
   io.data(0) <> mod.io
   // io.data(1) <> bbox.io              // <-- This fails!
+  // bbox.io <> io.data(1)
 
   // Explicit connection of bbox
-  // bbox.io.a := io.data(1).a          // <-- These are ok
-  // io.data(1).b := bbox.io.b
+  bbox.io.a := io.data(1).a          // <-- These are ok
+  io.data(1).b := bbox.io.b
 }
