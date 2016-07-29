@@ -4,6 +4,7 @@ import chisel3._
 import chisel3.testers.TesterDriver
 import java.io._
 import chisel3Base.traitAndClassOrdering.TraitOrdering
+import chisel3Base.blackBoxTests.BlackBoxSubModule
 
 import issues._
 
@@ -50,6 +51,7 @@ object Main {
       case "VecOfModViaType"=>Builder.do_all { () => new VecOfModViaType   }
       case "VecOfModViaSeq" =>Builder.do_all { () => new VecOfModViaSeq    }
       case "TraitOrdering" => Builder.do_all { () => new TraitOrdering     }
+      case "BlackBoxSub" =>   Builder.do_all { () => new BlackBoxSubModule }
 
       // case "And" => TesterDriver.execute { () => new AndTester }
       // case "Or" => TesterDriver.execute  { () => new OrTester }
