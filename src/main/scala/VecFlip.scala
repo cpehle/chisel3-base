@@ -14,14 +14,14 @@ class VecIOBundle(n: Int) extends Bundle {
 }
 
 class VecIO extends Module {
-  lazy val io = new VecIOBundle(2)
+  val io = new VecIOBundle(2)
   io.o_a := io.i_a
   // io.o_b := io.i_b
   io.o_c := io.i_c
 }
 
 class VecIOFlip extends Module {
-  lazy val io = (new VecIOBundle(2)).flip
+  val io = (new VecIOBundle(2)).flip
   io.i_a := io.o_a
   // io.i_b := io.o_b
   io.i_c := io.o_c
